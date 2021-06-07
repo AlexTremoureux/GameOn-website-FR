@@ -23,6 +23,7 @@ let quantity = document.getElementById("quantity");
 let locationEvent = document.getElementsByClassName(".checkbox-input");
 let checkbox1 = document.getElementById("checkbox1");
 let nameForm = [firstName, lastName];
+const modalClose = document.querySelector(".close")
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -80,3 +81,10 @@ function validation(event){
     }
   }
 }
+// close modal function
+function closeModal() {
+  modalbg.style.display = "none";
+}
+
+// close modal event
+modalClose.addEventListener("click", closeModal);
