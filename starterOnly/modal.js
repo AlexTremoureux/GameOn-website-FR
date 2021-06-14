@@ -74,7 +74,7 @@ formValid.addEventListener("click", validation)
 //Fonction validation
 function validation(event){ 
 
-  event.preventDefault();
+  //event.preventDefault();
 
 
   // Validation champ Nom / prénom
@@ -87,8 +87,9 @@ function validation(event){
         element.scope.closest(".formData").setAttribute("data-error", element.errorMessage);
       }else {
         element.scope.closest(".formData").setAttribute("data-error", "");
+        //return true
       }
-      //listener sur input et fonction 
+      //listener sur input et rappel de la fonction 
       element.scope.addEventListener("blur", function(event) {
         event.preventDefault();
         if (element.scope.validity.valueMissing) {
@@ -112,8 +113,9 @@ function validation(event){
     }else{
         event.preventDefault();
         checkbox1.closest(".formData").setAttribute("data-error", "");
+        //return true
     }
-    //listener sur checkbox1 et fonction
+    //listener sur checkbox1 et rappel de la fonction
     checkbox1.addEventListener("change", function(event) {
       if (this.checked==false) {
         checkbox1.closest(".formData").setAttribute("data-error", "Veuillez accepter nos conditions d'utilisation ");
@@ -124,7 +126,7 @@ function validation(event){
     })
   }
   
-  conditionsOfUse()
+  conditionsOfUse();
   
 
   // Validation champ Villes
@@ -141,6 +143,7 @@ function validation(event){
         elCity.closest(".formData").setAttribute("data-error", "veuillez cocher une ville")
       }else {
         elCity.closest(".formData").setAttribute("data-error", "")
+        //return true
       }
       //listener sur elCity et fonction
       elCity.addEventListener("blur", function(event){
@@ -151,9 +154,11 @@ function validation(event){
         }
       })
     }
-    
   }
 
-  countCheckbox()
+  countCheckbox();
   
+  /*if (nameInput && conditionsOfUse && countCheckbox == !true){
+    alert("formulaire envoyé avec succès")
+  }*/
 }
