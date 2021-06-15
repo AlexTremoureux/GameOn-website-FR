@@ -44,7 +44,7 @@ function validation(event){
 
   // Validation champ Nom / Prénom / Email / Birthdate / Nombre de tournois
   nameInput();
-
+  console.log(birthdate.value);
   // Validation Conditions d'utilisation
   conditionsOfUse();
 
