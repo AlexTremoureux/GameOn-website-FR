@@ -58,9 +58,9 @@
           <div class="modal-body">
             <form
               name="reserve"
-              action="index.html"
+              action="/index.html"
               method="post"
-              onsubmit="return validate();"
+              onsubmit="return validate() ;"
             >
               <div
                 class="formData">
@@ -218,6 +218,7 @@
                 class="button"
                 value="C'est parti"
               />
+              <div id="snackbar">Merci! Réservation effectuée.</div>
             </form>
           </div>
         </div>
@@ -228,6 +229,7 @@
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
+    <script type="module" src="modal.js"></script>
+    
   </body>
 </html>
