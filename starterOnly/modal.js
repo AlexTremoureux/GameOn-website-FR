@@ -1,21 +1,18 @@
-import {modalbg, quantity} from './variable.js';
-import {modalBtn} from './variable.js';
-import {modalClose} from './variable.js';
-import {formValid} from './variable.js';
-import {nameInput} from './function.js';
-import {conditionsOfUse} from './function.js';
-import {countCheckbox} from './function.js';
-import {snackbar} from './function.js';
+import { modalbg } from './variable.js';
+import { modalBtn } from './variable.js';
+import { modalClose } from './variable.js';
+import { formValid } from './variable.js';
+import { editNav } from './function.js';
+import { nameInput } from './function.js';
+import { conditionsOfUse } from './function.js';
+import { countCheckbox } from './function.js';
+import { snackbar } from './function.js';
 
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
 
+
+// Open Close function Hamburger
+let iconBurger = document.getElementById("burger");
+iconBurger.addEventListener("click", editNav);
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -34,26 +31,25 @@ function closeModal() {
 modalClose.addEventListener("click", closeModal);
 
 // Validation formulaire
-formValid.addEventListener("click", validation)
+formValid.addEventListener("click", validation);
 
 
 //Fonction validation
-function validation(event){ 
-
+function validation(event) {
   event.preventDefault();
-
   // Validation champ Nom / Prénom / Email / Birthdate / Nombre de tournois
   nameInput();
-  console.log(birthdate.value);
+
   // Validation Conditions d'utilisation
   conditionsOfUse();
 
   // Validation champ Villes
   countCheckbox();
-console.log(quantity.value)
-  // Si toutes les fonctions ont renvoyées true, fonction snackbar qui envoi un message de confirmation d'envoi
-  if (nameInput() && conditionsOfUse() && countCheckbox() == true){
-    snackbar()
-  }
 
+  // Si toutes les fonctions ont renvoyées true, fonction snackbar qui envoi un message de confirmation d'envoi
+  if (nameInput() && conditionsOfUse() && countCheckbox() == true) {
+    setTimeout(function () { closeModal(); }, 2000);
+    snackbar();
+  } else {
+  }
 }
