@@ -13,8 +13,8 @@ export function editNav() {
 }
 
 // Validation champ Nom / prénom
-export function nameInput() {
-
+export function inputValid() {
+  let countValidationInput = 0;
   //Boucle for de l'array elInput
   for (let element of elInput) {
     //Si pas de valeurs, retourne message d'erreur
@@ -25,25 +25,31 @@ export function nameInput() {
     } else if (!element.regex.test(element.scope.value)) {
       element.scope.closest(".formData").setAttribute("data-error", element.errorMessage);
       element.scope.style.borderColor = "red";
-      //Sinon efface le message d'erreur et renvoi true
+      //Sinon efface le message d'erreur
     } else {
       element.scope.closest(".formData").setAttribute("data-error", "");
       element.scope.style.borderColor = "black";
+      countValidationInput ++;
+    }
+  }
+  // Si le nombre d'input valide = le nombre d'input de l'array, renvoi true
+  if (countValidationInput === elInput.length) {
+    return true
+  }
+}
+
+// Validation champ Villes
+export function countCheckbox() {
+ // Boucle permettant l'execution de setAttribute sur la nodeList locationCity
+  for (let elCity of locationCity) {
+     //Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkbox checked, si le compteur de checkbox checked<1 = erreur
+    if ([...locationCity].filter(({ checked }) => checked).length < 1) {
+      elCity.closest(".formData").setAttribute("data-error", "veuillez cocher une ville");
+      //Sinon renvoi true
+    } else {
+      elCity.closest(".formData").setAttribute("data-error", "");
       return true;
     }
-    //listener sur input et rappel de la fonction 
-    element.scope.addEventListener("blur", function (event) {
-      if (element.scope.validity.valueMissing) {
-        element.scope.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ.");
-        element.scope.style.borderColor = "red";
-      } else if (!element.regex.test(element.scope.value)) {
-        element.scope.closest(".formData").setAttribute("data-error", element.errorMessage);
-        element.scope.style.borderColor = "red";
-      } else {
-        element.scope.closest(".formData").setAttribute("data-error", "");
-        element.scope.style.borderColor = "black";
-      }
-    })
   }
 }
 
@@ -56,30 +62,6 @@ export function conditionsOfUse() {
   } else {
     checkbox1.closest(".formData").setAttribute("data-error", "");
     return true;
-  }
-  //listener sur checkbox1 et rappel de la fonction
-  checkbox1.addEventListener("change", function (event) {
-    if (!this.checked) {
-      checkbox1.closest(".formData").setAttribute("data-error", "Veuillez accepter nos conditions d'utilisation ");
-    } else {
-      checkbox1.closest(".formData").setAttribute("data-error", "");
-    }
-  })
-}
-
-// Validation champ Villes
-export function countCheckbox() {
-  //Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkbox checked
-  const countcbx = [...locationCity].filter(({ checked }) => checked).length;
-  for (let elCity of locationCity) {
-    //si le compteur de checkbox checked<1, message d'erreur
-    if (countcbx < 1) {
-      elCity.closest(".formData").setAttribute("data-error", "veuillez cocher une ville");
-      //Sinon renvoi true
-    } else {
-      elCity.closest(".formData").setAttribute("data-error", "");
-      return true;
-    }
   }
 }
 
