@@ -34,22 +34,19 @@ export function inputValid() {
   }
   // Si le nombre d'input valide = le nombre d'input de l'array, renvoi true
   if (countValidationInput === elInput.length) {
-    return true
+    return true;
   }
 }
 
 // Validation champ Villes
 export function countCheckbox() {
- // Boucle permettant l'execution de setAttribute sur la nodeList locationCity
-  for (let elCity of locationCity) {
-     //Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkbox checked, si le compteur de checkbox checked<1 = erreur
-    if ([...locationCity].filter(({ checked }) => checked).length < 1) {
-      elCity.closest(".formData").setAttribute("data-error", "veuillez cocher une ville");
-      //Sinon renvoi true
-    } else {
-      elCity.closest(".formData").setAttribute("data-error", "");
-      return true;
-    }
+    //Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkbox checked, si le compteur de checkbox checked<1 = erreur
+  if ([...locationCity].filter(({ checked }) => checked).length < 1) {
+    locationCity[0].closest(".formData").setAttribute("data-error", "veuillez cocher une ville");
+    //Sinon renvoi true
+  } else {
+    locationCity[0].closest(".formData").setAttribute("data-error", "");
+    return true;
   }
 }
 
