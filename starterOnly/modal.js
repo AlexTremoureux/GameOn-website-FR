@@ -40,10 +40,11 @@ function validation(event) {
   const checkboxValidity = countCheckbox();
   // Validation Conditions d'utilisation
   const conditionValidity = conditionsOfUse();
-  // Si toutes les fonctions ont renvoyées true, fonction snackbar qui envoi un message de confirmation d'envoi
+  /* Si toutes les fonctions ont renvoyées true, fonction snackbar qui envoi un message de confirmation d'envoi */
   if (inputValidity && checkboxValidity && conditionValidity == true) {
     setTimeout(function () { closeModal(); }, 2000);
     snackbar();
   } else {
+    return false
   }
 }

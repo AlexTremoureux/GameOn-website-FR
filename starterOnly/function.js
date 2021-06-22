@@ -17,33 +17,37 @@ export function inputValid() {
   let countValidationInput = 0;
   //Boucle for de l'array elInput
   for (let element of elInput) {
-    //Si pas de valeurs, retourne message d'erreur
+    /* Si pas de valeurs, retourne message d'erreur */
     if (element.scope.validity.valueMissing) {
       element.scope.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ.");
       element.scope.style.borderColor = "red";
-      //Sinon si mauvaise valeur saisie, retourne message d'erreur
+      /* Sinon si mauvaise valeur saisie, retourne message d'erreur */
     } else if (!element.regex.test(element.scope.value)) {
       element.scope.closest(".formData").setAttribute("data-error", element.errorMessage);
       element.scope.style.borderColor = "red";
-      //Sinon efface le message d'erreur
+      /* Sinon efface le message d'erreur */
     } else {
       element.scope.closest(".formData").setAttribute("data-error", "");
       element.scope.style.borderColor = "black";
       countValidationInput ++;
     }
   }
-  // Si le nombre d'input valide = le nombre d'input de l'array, renvoi true
+  /* Si le nombre d'input valide = le nombre d'input de l'array, renvoi true */
   if (countValidationInput === elInput.length) {
     return true;
+    /* Sinon, renvoi false */
+  }else{
+    return false;
   }
 }
 
 // Validation champ Villes
 export function countCheckbox() {
-    //Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkbox checked, si le compteur de checkbox checked<1 = erreur
+    /* Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkbox checked, si le compteur de checkbox checked<1 = erreur */
   if ([...locationCity].filter(({ checked }) => checked).length < 1) {
     locationCity[0].closest(".formData").setAttribute("data-error", "veuillez cocher une ville");
-    //Sinon renvoi true
+    return false;
+    /* Sinon renvoi true */
   } else {
     locationCity[0].closest(".formData").setAttribute("data-error", "");
     return true;
@@ -52,10 +56,11 @@ export function countCheckbox() {
 
 // Validation Conditions d'utilisation
 export function conditionsOfUse() {
-  //Si les condition d'utilisations ne sont pas checked, retourne message d'erreur
+  /* Si les condition d'utilisations ne sont pas checked, retourne message d'erreur */
   if (!checkbox1.checked) {
     checkbox1.closest(".formData").setAttribute("data-error", "Veuillez accepter nos conditions d'utilisation ");
-    //Sinon efface le message d'erreur et renvoi true
+    return false;
+    /* Sinon efface le message d'erreur et renvoi true */
   } else {
     checkbox1.closest(".formData").setAttribute("data-error", "");
     return true;
