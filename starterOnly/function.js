@@ -2,8 +2,9 @@
 import { locationCity } from './variable.js';
 import { checkbox1 } from './variable.js';
 import { elInput } from './variable.js';
+
 // Menu Hamburger function
-export function editNav() {
+export const editNav = () => {
   var z = document.getElementById("myTopnav");
   if (z.className === "topnav") {
     z.className += " responsive";
@@ -12,27 +13,27 @@ export function editNav() {
   }
 }
 
-// Validation champ Nom / prénom
-export function inputValid() {
+// Validation champ Nom / Prénom / E-mail / Date de naissance / Nombre de tournois
+export const inputValid = () => {
   let countValidationInput = 0;
   //Boucle for de l'array elInput
   for (let element of elInput) {
-    /* Si pas de valeurs, retourne message d'erreur */
+    /* Si il n'y a pas de valeurs rentrées, apparition d'un message d'erreur */
     if (element.scope.validity.valueMissing) {
       element.scope.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ.");
       element.scope.style.borderColor = "red";
-      /* Sinon si mauvaise valeur saisie, retourne message d'erreur */
+      /* Sinon si une mauvaise valeur est saisie, apparition d'un message d'erreur personnalisé */
     } else if (!element.regex.test(element.scope.value)) {
       element.scope.closest(".formData").setAttribute("data-error", element.errorMessage);
       element.scope.style.borderColor = "red";
-      /* Sinon efface le message d'erreur */
+      /* Sinon effacement du message d'erreur si le champ est saisi correctement*/
     } else {
       element.scope.closest(".formData").setAttribute("data-error", "");
       element.scope.style.borderColor = "black";
       countValidationInput ++;
     }
   }
-  /* Si le nombre d'input valide = le nombre d'input de l'array, renvoi true */
+  /* Si le nombre d'input valide est égal au nombre d'input de l'array elInput, renvoi true */
   if (countValidationInput === elInput.length) {
     return true;
     /* Sinon, renvoi false */
@@ -42,12 +43,12 @@ export function inputValid() {
 }
 
 // Validation champ Villes
-export function countCheckbox() {
-    /* Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkbox checked, si le compteur de checkbox checked<1 = erreur */
+export const countCheckbox = () => {
+    /* Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkboxs cochés, si il est inferieur à 1 message d' erreur */
   if ([...locationCity].filter(({ checked }) => checked).length < 1) {
     locationCity[0].closest(".formData").setAttribute("data-error", "veuillez cocher une ville");
     return false;
-    /* Sinon renvoi true */
+    /* Sinon effacement du message d'erreur et renvoi true */
   } else {
     locationCity[0].closest(".formData").setAttribute("data-error", "");
     return true;
@@ -55,8 +56,8 @@ export function countCheckbox() {
 }
 
 // Validation Conditions d'utilisation
-export function conditionsOfUse() {
-  /* Si les condition d'utilisations ne sont pas checked, retourne message d'erreur */
+export const conditionsOfUse = () => {
+  /* Si la case des conditions d'utilisations n' est pas cochée, retourne un message d'erreur */
   if (!checkbox1.checked) {
     checkbox1.closest(".formData").setAttribute("data-error", "Veuillez accepter nos conditions d'utilisation ");
     return false;
@@ -67,13 +68,14 @@ export function conditionsOfUse() {
   }
 }
 
-// Message de validation à l'envoi du formulaire
-export function snackbar() {
-  // DOM Element
-  var x = document.getElementById("snackbar");
-  // Ajoute la classe show pour afficher le message de validation
-  x.className = "show";
-  // Après 2 secondes, supprime la classe show
-  setTimeout(function () { x.className = x.className.replace("show", ""); }, 2000);
+// DOM Element
+const x = document.getElementById("snackbar");
+/* Message de validation à l'envoi du formulaire
+Ajout de la classe show afin d'afficher le message de validation
+Après 2 secondes, suppression de la classe show afin d'effacer le message de validation*/
+export const snackbar = () => {
+  x.className = "show" ;
+  setTimeout = (() => {
+  x.className = x.className.replace("show", "")
+  }, 2000)
 }
-
