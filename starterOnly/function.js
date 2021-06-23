@@ -1,7 +1,7 @@
 
-import { locationCity } from './variable.js';
-import { checkbox1 } from './variable.js';
-import { elInput } from './variable.js';
+import { locationCity } from './constants.js';
+import { checkbox1 } from './constants.js';
+import { elInput } from './constants.js';
 
 // Menu Hamburger function
 export const editNav = () => {
@@ -33,26 +33,20 @@ export const inputValid = () => {
       countValidationInput ++;
     }
   }
-  /* Si le nombre d'input valide est égal au nombre d'input de l'array elInput, renvoi true */
-  if (countValidationInput === elInput.length) {
-    return true;
-    /* Sinon, renvoi false */
-  }else{
-    return false;
-  }
+  /* Si le nombre d'input valide est égal au nombre d'input de l'array elInput, renvoi true, sinon false */
+  return (countValidationInput === elInput.length) 
 }
 
 // Validation champ Villes
 export const countCheckbox = () => {
-    /* Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkboxs cochés, si il est inferieur à 1 message d' erreur */
+  /* Mise en place d'un filtre sur l'array locationCity qui vient chercher le nombre de checkboxs cochés, si il est inferieur à 1 message d' erreur */
   if ([...locationCity].filter(({ checked }) => checked).length < 1) {
     locationCity[0].closest(".formData").setAttribute("data-error", "veuillez cocher une ville");
     return false;
-    /* Sinon effacement du message d'erreur et renvoi true */
-  } else {
-    locationCity[0].closest(".formData").setAttribute("data-error", "");
-    return true;
+  /* Sinon effacement du message d'erreur et renvoi true */
   }
+  locationCity[0].closest(".formData").setAttribute("data-error", "");
+  return true;
 }
 
 // Validation Conditions d'utilisation
@@ -62,20 +56,15 @@ export const conditionsOfUse = () => {
     checkbox1.closest(".formData").setAttribute("data-error", "Veuillez accepter nos conditions d'utilisation ");
     return false;
     /* Sinon efface le message d'erreur et renvoi true */
-  } else {
-    checkbox1.closest(".formData").setAttribute("data-error", "");
-    return true;
   }
+  checkbox1.closest(".formData").setAttribute("data-error", "");
+  return true;
 }
 
 // DOM Element
 const x = document.getElementById("snackbar");
 /* Message de validation à l'envoi du formulaire
-Ajout de la classe show afin d'afficher le message de validation
-Après 2 secondes, suppression de la classe show afin d'effacer le message de validation*/
+Ajout de la classe show afin d'afficher le message de validation*/
 export const snackbar = () => {
   x.className = "show" ;
-  setTimeout = (() => {
-  x.className = x.className.replace("show", "")
-  }, 2000)
 }

@@ -1,7 +1,7 @@
-import { modalbg } from './variable.js';
-import { modalBtn } from './variable.js';
-import { modalClose } from './variable.js';
-import { formValid } from './variable.js';
+import { modalbg } from './constants.js';
+import { modalBtn } from './constants.js';
+import { modalClose } from './constants.js';
+import { formValid } from './constants.js';
 import { editNav } from './function.js';
 import { inputValid } from './function.js';
 import { conditionsOfUse } from './function.js';
@@ -36,9 +36,9 @@ const validation = (event) => {
   // Validation Conditions d'utilisation
   const conditionValidity = conditionsOfUse();
   /* Si toutes les fonctions ont renvoyées true, fonction snackbar qui envoi un message de confirmation d'envoi */
-  if (inputValidity && checkboxValidity && conditionValidity == true) {
-    setTimeout = (() => { closeModal(); }, 2000);
+  if ( inputValidity && checkboxValidity && conditionValidity ) {
     snackbar();
+    setTimeout(function(){ closeModal() }, 2000);
   } else {
     return false
   }
