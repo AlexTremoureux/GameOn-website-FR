@@ -38,7 +38,9 @@ const validation = (event) => {
   /* Si toutes les fonctions ont renvoyées true, fonction snackbar qui envoi un message de confirmation d'envoi */
   if ( inputValidity && checkboxValidity && conditionValidity ) {
     snackbar();
-    setTimeout(function(){ closeModal() }, 2000);
+    setTimeout(() => {
+      closeModal()
+    }, 2000);
   } else {
     return false
   }

@@ -67,4 +67,7 @@ const x = document.getElementById("snackbar");
 Ajout de la classe show afin d'afficher le message de validation*/
 export const snackbar = () => {
   x.className = "show" ;
+  setTimeout(() => {
+    x.classList.remove("show")
+  }, 2000);
 }

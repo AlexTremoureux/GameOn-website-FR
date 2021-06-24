@@ -358,7 +358,7 @@ input[data-error]::after {
   background-color: #fff;
 }
 
-/* Snackbar positionné centré en bas de l'écran caché par défaut */
+/* Snackbar caché par défaut */
 #snackbar {
   visibility: hidden; 
   display: flex;
