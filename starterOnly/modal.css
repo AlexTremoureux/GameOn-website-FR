@@ -224,13 +224,13 @@ input {
   font-size: 0.4em;
   color: #e54858;
   display: block;
-  margin-top: 7px;
+  margin-top: 2px;
   margin-bottom: 7px;
   text-align: right;
   opacity: 1;
   transition: 0.3s;
 }
-.formData[data-error-visible="true"]::after {
+/*.formData[data-error-visible="true"]::after {
   opacity: 1;
 }
 .formData[data-error-visible="true"] .text-control {
@@ -240,7 +240,7 @@ input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-}
+}*/
 .checkbox-label,
 .checkbox2-label {
   position: relative;
