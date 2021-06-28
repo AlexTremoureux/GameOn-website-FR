@@ -471,7 +471,7 @@ input[data-error]::after {
   margin-top: 50px;
   font-size: 4.9rem;
   font-weight: normal;
-  white-space: wrap;
+  white-space: normal;
 }
 .hero-text {
   width: 100%;
